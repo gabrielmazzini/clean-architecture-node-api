@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import {User} from "../../entities/User";
-import {IMailProvider} from "../../providers/IMailProvider";
-import {IUserRepository} from "../../repository/IUserRepository";
+import {IMailProvider} from "../../providers/mail-service/IMailProvider";
+import {IUserRepository} from "../../repository/user-repository/IUserRepository";
 import {ICreateUserRequestDTO} from "./CreateUserDTO";
 
 /**

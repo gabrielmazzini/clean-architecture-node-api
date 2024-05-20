@@ -1,5 +1,5 @@
 import Mail = require("nodemailer/lib/mailer");
-import {IMailProvider, IMessage} from "../IMailProvider";
+import {IMailProvider, IMessage} from "./IMailProvider";
 import nodemailer from "nodemailer";
 
 /**

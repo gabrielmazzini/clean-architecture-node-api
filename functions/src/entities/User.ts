@@ -18,18 +18,3 @@ export class User {
     }
   }
 }
-
-/**
- */
-export class admin {
-  public readonly id: string | undefined;
-  public name: string | undefined;
-
-  /**
-   * @param {string} id
-   * @param {string} name
-   */
-  constructor(id: string | undefined, name?: string) {
-    Object.assign(this, {id, name});
-  }
-}
