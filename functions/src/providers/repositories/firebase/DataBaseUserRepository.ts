@@ -1,20 +1,21 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable max-len */
-import {User} from "../../entities/User";
-import {IUserRepository} from "../IUserRepository";
-import admin from "firebase-admin";
-import {Firestore} from "firebase-admin/firestore";
+import {User} from "../../../entities/User";
+import {IUserRepository} from "../../../repository/user-repository/IUserRepository";
+import admin, {firestore} from "firebase-admin";
+import {AdminFirebase} from "./repository/Admin-firebase";
 
 admin.initializeApp();
 
 /**
  */
 export class DataBaseUserRepository implements IUserRepository {
-  private db: Firestore;
+  private db: firestore.Firestore;
   /**
+   * @param {AdminFirebase} firestoreProvider
    */
-  constructor() {
-    this.db = admin.firestore();
+  constructor(firestoreProvider: AdminFirebase) {
+    this.db = firestoreProvider.getFirestoreInstance();
   }
 
   /**
