@@ -13,3 +13,7 @@ export interface IgetUserRepository {
 export interface IUpdateUserRepository {
     updateUser(id: string, name: string, email: string, password: string): Promise<void>;
 }
+
+export interface IDeleteUserRepository {
+    deleteUser(id: string): Promise<void>;
+}

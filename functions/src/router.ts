@@ -3,6 +3,7 @@ import {Router} from "express";
 import {createUserController} from "./useCases/createUser";
 import {getUserController} from "./useCases/getUser";
 import {updateUserController} from "./useCases/updateUser";
+import {deleteUserController} from "./useCases/deleteUser";
 
 const router = Router();
 
@@ -14,6 +15,10 @@ router.get("/user/:id", (request, response) => {
 });
 router.put("/user/:id", (request, response) => {
   return updateUserController.handle(request, response);
+});
+
+router.delete("/user/:id", (request, response) => {
+  return deleteUserController.handle(request, response);
 });
 
 export {router};
