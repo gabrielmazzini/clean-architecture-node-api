@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {Response, Request} from "express";
-import {CreateUserUseCase} from "./CreateUserUseCase";
+import {CreateUserUseCase} from "../useCase/CreateUserUseCase";
+import {ErrorUserAlreadyExists} from "../errors/errors";
 
 /**
  */
@@ -30,9 +31,16 @@ export class CreateUserController {
         status: true,
       });
     } catch (error: any) {
-      return res.status(500).json({
-        message: error.message,
-      });
+      if (error instanceof ErrorUserAlreadyExists) {
+        return res.status(400).json({
+          message: error.message,
+          status: false,
+        });
+      } else {
+        return res.status(500).json({
+          message: error.message,
+        });
+      }
     }
   }
 }

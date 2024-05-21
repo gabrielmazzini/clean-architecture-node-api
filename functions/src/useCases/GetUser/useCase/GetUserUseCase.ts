@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
-import {User} from "../../entities/User";
-import {IgetUserRepository} from "../../repository/user-repository/IUserRepository";
-import {GetUserDTO} from "./GetUserDTO";
+import {User} from "../../../entities/user-entities/User";
+import {IgetUserRepository} from "../../../repository/user-repository/IUserRepository";
+import {GetUserDTO} from "../DTO/GetUserDTO";
+import {ErrorUserNotFound} from "../errors/errors";
 
 /**
  */
@@ -21,7 +22,7 @@ export class GetUserUseCase {
       const user = await this.getUserRepository.getInfoUser(data.id);
       return user as User;
     } catch (error: any) {
-      throw new Error(error.message);
+      throw new ErrorUserNotFound(error.message);
     }
   }
 }
