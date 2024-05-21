@@ -1,4 +1,5 @@
-import {User} from "../../entities/User";
+/* eslint-disable max-len */
+import {User} from "../../entities/user-entities/User";
 
 export interface IUserRepository {
     fyndByEmail(email: string): Promise<User | null>;
@@ -7,4 +8,8 @@ export interface IUserRepository {
 
 export interface IgetUserRepository {
     getInfoUser(id: string): Promise<User | null>;
+}
+
+export interface IUpdateUserRepository {
+    updateUser(id: string, name: string, email: string, password: string): Promise<void>;
 }

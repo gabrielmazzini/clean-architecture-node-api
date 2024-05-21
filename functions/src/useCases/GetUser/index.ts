@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
-import {GetUserDataBaseUserRepository} from "../../providers/repositories/firebase/DataBaseUserRepository";
-import {AdminFirebase} from "../../providers/repositories/firebase/repository/Admin-firebase";
-import {FirebaseService} from "../../providers/repositories/firebase/service/firebase-service";
-import {GetUserController} from "./GetUserController";
-import {GetUserUseCase} from "./GetUserUseCase";
+import {GetUserDataBaseUserRepository} from "../../dataSource/repositories/databaseUserRepository/DataBaseUserRepository";
+import {AdminFirebase} from "../../dataSource/firebase/repository/Admin-firebase";
+import {FirebaseService} from "../../dataSource/firebase/service/firebase-service";
+import {GetUserController} from "./controller/GetUserController";
+import {GetUserUseCase} from "./useCase/GetUserUseCase";
 
 
 const firebaseService = new FirebaseService();

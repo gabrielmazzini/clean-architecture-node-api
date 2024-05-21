@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-import {MailTrapMailerProvider} from "../../providers/mail-service/MailTrapMailerProvider";
-import {DataBaseUserRepository} from "../../providers/repositories/firebase/DataBaseUserRepository";
-import {AdminFirebase} from "../../providers/repositories/firebase/repository/Admin-firebase";
-import {FirebaseService} from "../../providers/repositories/firebase/service/firebase-service";
-import {CreateUserController} from "./CreateUserController";
-import {CreateUserUseCase} from "./CreateUserUseCase";
+import {MailTrapMailerProvider} from "../../dataSource/mail-service/MailTrapMailerProvider";
+import {DataBaseUserRepository} from "../../dataSource/repositories/databaseUserRepository/DataBaseUserRepository";
+import {AdminFirebase} from "../../dataSource/firebase/repository/Admin-firebase";
+import {FirebaseService} from "../../dataSource/firebase/service/firebase-service";
+import {CreateUserController} from "./controller/CreateUserController";
+import {CreateUserUseCase} from "./useCase/CreateUserUseCase";
 
 const firebaseService = new FirebaseService();
 const firebaseInstance = new AdminFirebase(firebaseService);
