@@ -12,6 +12,7 @@ import {Usecase} from "../../usecase";
 export class CreateUserUseCase implements Usecase<CreateUserInputDto, CreateUserOutputDto> {
   /**
      * @param {IMailProvider} mailRepository
+     * @param {IUserGateway} userGateway
      */
   private constructor(
         private userGateway: IUserGateway,

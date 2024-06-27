@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import {Request, Response} from "express";
 import {HttpMethod, Route} from "../routes";
-import {CreateUserUseCase} from "../../../../../usecases/user/create-user/CreateUserUsecase";
-import {CreateUserInputDto} from "../../../../../usecases/user/create-user/CreateUserDTO";
-import {ErrorUserAlreadyExists} from "../../../../../usecases/user/create-user/errors";
+import {CreateUserUseCase} from "../../../usecases/user/create-user/CreateUserUsecase";
+import {CreateUserInputDto} from "../../../usecases/user/create-user/CreateUserDTO";
+import {ErrorUserAlreadyExists} from "../../../usecases/user/create-user/errors";
 
 export type CreateUserResponseDto = {
     id: string;

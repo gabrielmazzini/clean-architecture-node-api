@@ -9,7 +9,7 @@ admin.initializeApp();
 
 /**
  */
-export class CreateUserRepositoryFirebase implements IUserGateway {
+export class UserRepositoryFirebase implements IUserGateway {
   /**
      * @param {firestore} firestoreProvider
      */
@@ -19,7 +19,7 @@ export class CreateUserRepositoryFirebase implements IUserGateway {
    * @return {CreateUserRepositoryFirebase}
    */
   public static create(firestoreProvider: firestore.Firestore) {
-    return new CreateUserRepositoryFirebase(firestoreProvider);
+    return new UserRepositoryFirebase(firestoreProvider);
   }
   /**
      * @param {string} email
@@ -49,6 +49,45 @@ export class CreateUserRepositoryFirebase implements IUserGateway {
       password: user.password,
     };
     await this.firestoreProvider.collection("users").doc(user.id).create(userData);
+  }
+  /**
+   * @param {string} id
+   */
+  async getInfoUser(id: string): Promise<Omit<User, "password"> | null> {
+    const userRef = this.firestoreProvider.collection("users").doc(id);
+    const userDoc = await userRef.get();
+    if (!userDoc.exists) {
+      return null;
+    }
+    const user: Omit<User, "password"> = {
+      id: userDoc.data()!.id,
+      name: userDoc.data()!.name,
+      email: userDoc.data()!.email,
+    };
+    return user;
+  }
+  /**
+   * @param {string} id
+   * @param {User} input
+   */
+  async updateUser(id: string, input: Omit<User, "password" | "id">): Promise<boolean | null> {
+    const userRef = this.firestoreProvider.collection("users").doc(id);
+    const userDoc = await userRef.get();
+    if (!userDoc.exists) {
+      return null;
+    }
+    const user: Omit<User, "password" | "id"> = {
+      name: input.name,
+      email: input.email,
+    };
+    try {
+      await this.firestoreProvider.collection("users")
+        .doc(id)
+        .update({...user});
+      return true;
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
   }
 }
 

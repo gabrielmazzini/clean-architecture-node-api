@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {Api} from "../api";
 import express, {Express} from "express";
-import {Route} from "./routes/routes";
+import {Route} from "../../../presenter/routes/routes";
 
 /**
  */
